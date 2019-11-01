@@ -1,0 +1,14 @@
+{
+  "name": "cubo3d",
+  "version": "1.0.0",
+  "description": "Api rest en Node para comunicacion con cubo 3D",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JoseEstrada",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
