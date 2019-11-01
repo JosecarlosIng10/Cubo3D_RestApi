@@ -5,4 +5,8 @@ app.get('/', (req,res)=>{
     res.send("Cubo empieza todo")
 });
 
+
+app.get('/prueba', (req,res)=>{
+    res.send("Chido")
+});
 app.listen(port, ()=>console.log('Server is running dude!! ' + port ));
