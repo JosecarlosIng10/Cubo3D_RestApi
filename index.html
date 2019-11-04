@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CUBO</title>
+    <base href="/">
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="./node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <div class="card text-center">
+        <div class="card-header" style="background-color: darkgrey;">
+            BIENVENIDOS AL CUBO 3D
+        </div>
+        <div class="card-body">
+            <div class="p-3 mb-2 bg-warning text-dark" style="width: 20%; margin-left: 40%;">SERVICIOS DISPONIBLES</div>
+            <div class="card-group" style="margin-top: 3%;">
+                <div class="card text-white bg-primary mb-3"
+                    style="max-width: 18rem; margin-left: 20%; margin-right: 5%;">
+                    <div class="card-header">GET</div>
+                    <div class="card-body">
+                        <h5 class="card-title">/cadena</h5>
+                        <p class="card-text">Obtiene todas las cadenas guardadas en la base de datos.</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem; margin-right: 5%;">
+                    <div class="card-header">GET</div>
+                    <div class="card-body">
+                        <h5 class="card-title">/cadena/codigo</h5>
+                        <p class="card-text">Obtiene la cadena que pertenece a ese codigo.</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-right: 5%;">
+                    <div class="card-header">POST</div>
+                    <div class="card-body">
+                        <h5 class="card-title">/cadena</h5>
+                        <p class="card-text">Agrega una nueva cadena a la base de datos, request:
+                            {"texto":"string", "status":"string"}
+                        </p>
+                    </div>
+                </div>
+                <div class="card text-white bg-danger mb-3" style="max-width: 18rem; margin-right: 20%;">
+                    <div class="card-header">DELETE</div>
+                    <div class="card-body">
+                        <h5 class="card-title">/cadena/code</h5>
+                        <p class="card-text">Elimina la cadena que corresponda a ese codigo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+
+
+</body>
+
+</html>

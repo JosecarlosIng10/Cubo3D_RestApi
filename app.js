@@ -1,12 +1,70 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req,res)=>{
-    res.send("Cubo empieza todo")
-});
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/'));
 
 
-app.get('/prueba', (req,res)=>{
-    res.send("Chido")
+app.listen(port, () => console.log('Server is running dude!! ' + port));
+
+
+mongoose.connect('mongodb+srv://admin:admin@cluster0-i9nzs.mongodb.net/Cubo?retryWrites=true&w=majority', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log("Se conecto"))
+    .catch((err) => console.log("Error en conexion ", err));
+
+const CadenaModel = new mongoose.Schema({
+    texto: {
+        type: String,
+        required: true,
+    },
+    status: {
+        type: String,
+        required: false,
+    }
+})
+
+const cadena = mongoose.model('Texto', CadenaModel);
+
+app.post('/cadena', (req, res) => {
+    cadena.create(req.body)
+        .then((data) => res.send(data))
+        .catch((error) => res.send(error))
 });
-app.listen(port, ()=>console.log('Server is running dude!! ' + port ));
+
+app.get('/cadena',  (req, res) =>{
+    cadena.find({},  (err, text) =>{
+        var data = [];
+        text.forEach( (texto)=> {
+            data.push(texto);
+        });
+        res.send(data); 
+      
+    });
+
+   
+});
+
+app.get('/cadena/:code', (req,res)=>{
+    const code = req.params.code;
+    cadena.findById(code).then((data)=> res.send(data))
+    .catch((error)=> res.send(error));
+})
+
+app.delete('/cadena/:code',(req,res)=>{
+    const code = req.params.code;
+
+    cadena.deleteOne({_id: code})
+    .then((data)=> res.send(data))
+    .catch((error)=> res.send(error));
+})
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
