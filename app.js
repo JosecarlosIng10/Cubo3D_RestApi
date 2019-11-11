@@ -12,6 +12,9 @@ app.use(express.static(__dirname + '/'));
 app.listen(port, () => console.log('Server is running dude!! ' + port));
 
 
+/**
+ * Conexion a la base de datos que se encuentra en un cluster en Mongo Atlas.
+ */
 mongoose.connect('mongodb+srv://admin:admin@cluster0-i9nzs.mongodb.net/Cubo?retryWrites=true&w=majority', {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -19,7 +22,9 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0-i9nzs.mongodb.net/Cubo?retr
     .then(() => console.log("Se conecto"))
     .catch((err) => console.log("Error en conexion ", err));
 
-
+/**
+ * Modelo del objeto cadena.
+ */
 const CadenaModel = new mongoose.Schema({
     texto: {
         type: String,
@@ -33,6 +38,10 @@ const CadenaModel = new mongoose.Schema({
 
 const cadena = mongoose.model('Texto', CadenaModel);
 
+
+/**
+ * Se crea una nueva cadena en el server y se envia a graficar al cubo.
+ */
 app.post('/cadena', (req, res) => {
     cadena.create(req.body)
         .then((data) => res.send(data))
@@ -56,6 +65,9 @@ app.post('/cadena', (req, res) => {
 
 });
 
+/**
+ * Se obtienen las cadenas guardadas en la base de datos.
+ */
 app.get('/cadena', (req, res) => {
     cadena.find({}, (err, text) => {
         var data = [];
@@ -69,12 +81,18 @@ app.get('/cadena', (req, res) => {
 
 });
 
+/**
+ * Se obtiene una cadena especifica.
+ */
 app.get('/cadena/:code', (req, res) => {
     const code = req.params.code;
     cadena.findById(code).then((data) => res.send(data))
         .catch((error) => res.send(error));
 })
 
+/**
+ * Se elimina una cadena especifica.
+ */
 app.delete('/cadena/:code', (req, res) => {
     const code = req.params.code;
 
@@ -85,6 +103,9 @@ app.delete('/cadena/:code', (req, res) => {
         .catch((error) => res.send(error));
 })
 
+/**
+ * Se obtiene el html de la pagina de inicio de la api.
+ */
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 
