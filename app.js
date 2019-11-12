@@ -112,8 +112,10 @@ app.get('/', (req, res) => {
 
 });
 
-/*app.get('/casa', (req, res) => {
-    console.log(letras.graficar("A"));
-    res.sendFile(__dirname + '/index.html');
+app.get('/casa', (req, ress) => {
+    
+    request('http://localhost:3000/cadena', function(err, res, body) {
+        ress.send(body);
+    });
 
-});*/
+});
