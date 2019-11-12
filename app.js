@@ -52,7 +52,7 @@ app.post('/cadena', (req, res) => {
     for (let i = 0; i < cadenaLetras.length; i++) {
         setTimeout((i) => {
             console.log(cadenaLetras[i]);
-            request.post('http://192.168.1.22/', {
+            request.post('http://192.168.43.13/', {
                 form: {
                     user_input: cadenaLetras[i]
                 }
@@ -110,3 +110,9 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 
 });
+
+/*app.get('/casa', (req, res) => {
+    console.log(letras.graficar("A"));
+    res.sendFile(__dirname + '/index.html');
+
+});*/
