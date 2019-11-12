@@ -43,9 +43,9 @@ const cadena = mongoose.model('Texto', CadenaModel);
  * Se crea una nueva cadena en el server y se envia a graficar al cubo.
  */
 app.post('/cadena', (req, res) => {
-    cadena.create(req.body)
+    /*cadena.create(req.body)
         .then((data) => res.send(data))
-        .catch((error) => res.send(error));
+        .catch((error) => res.send(error));*/
 
     let cadenaLetras = letras.graficar(req.body.texto);
     var interval = 10 * 70;
@@ -61,6 +61,7 @@ app.post('/cadena', (req, res) => {
 
     }
 
+    res.send("GRAFICANDO");
 
 
 });
