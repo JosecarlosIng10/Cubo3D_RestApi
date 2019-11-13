@@ -104,6 +104,7 @@ module.exports.getCadena = (cadena) => {
 }
 
 module.exports.graficar = (cadena) => {
+    cadenaLoop = [];
     this.getCadenaImprimir(cadena);
     console.log(cadenaImprimir);
     let inicio =0;
