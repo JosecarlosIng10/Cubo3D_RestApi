@@ -52,7 +52,7 @@ app.post('/cadena', (req, res) => {
     for (let i = 0; i < cadenaLetras.length; i++) {
         setTimeout((i) => {
             console.log(cadenaLetras[i]);
-            request.post('http://192.168.43.13/', {
+            request.post('http://bc7854ae.ngrok.io/', {
                 form: {
                     user_input: cadenaLetras[i]
                 }
