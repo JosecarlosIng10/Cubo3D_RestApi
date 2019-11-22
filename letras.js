@@ -29,6 +29,17 @@ const letras = {
     X:[51,12,51],
     Y: [7,56,7],
     Z: [49,41,45,35],
+    Espacio:[0,0],
+    '1':[34,63,32],
+    '2':[57,41,47],
+    '3':[41,41,63],
+    '4':[15,8,63],
+    '5':[47,41,57],
+    '6':[63,41,57],
+    '7':[1,1,63],
+    '8':[63,37,63],
+    '9':[7,5,63],
+    '0':[63,33,63],
 
 
 };
@@ -46,16 +57,21 @@ module.exports.getLetra = (letra) => {
 module.exports.getCadenaImprimir = (cadena) =>{
     var linea = "";
     cadenaImprimir=[];
-    for (const letra in cadena) {
+    for (let letra in cadena) {
         if (cadena.hasOwnProperty(letra)) 
         {
-            let cadenaLetra =this.getLetra(cadena[letra]);
-            
+            let simbolo = cadena[letra];
+            if(simbolo===' '){
+                simbolo="Espacio";
+            }
+            let cadenaLetra =this.getLetra(simbolo);
             for(let i=0; i< cadenaLetra.length;i++){
                 cadenaImprimir.push(cadenaLetra[i])
             }
-            cadenaImprimir.push(0);
-            cadenaImprimir.push(0);
+            if(simbolo!=="Espacio"){
+                cadenaImprimir.push(0);
+                cadenaImprimir.push(0);
+            }
            
         }
 
@@ -106,7 +122,6 @@ module.exports.getCadena = (cadena) => {
 module.exports.graficar = (cadena) => {
     cadenaLoop = [];
     this.getCadenaImprimir(cadena);
-    console.log(cadenaImprimir);
     let inicio =0;
     let fin = 8;
     

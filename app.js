@@ -43,16 +43,11 @@ const cadena = mongoose.model('Texto', CadenaModel);
  * Se crea una nueva cadena en el server y se envia a graficar al cubo.
  */
 app.post('/cadena', (req, res) => {
-    /*cadena.create(req.body)
-        .then((data) => res.send(data))
-        .catch((error) => res.send(error));*/
-
     let cadenaLetras = letras.graficar(req.body.texto);
     var interval = 10 * 70;
     for (let i = 0; i < cadenaLetras.length; i++) {
         setTimeout((i) => {
-            console.log(cadenaLetras[i]);
-            request.post('http://b908f149.ngrok.io', {
+            request.post('http://2f930654.ngrok.io', {
                 form: {
                     user_input: cadenaLetras[i]
                 }
@@ -60,6 +55,9 @@ app.post('/cadena', (req, res) => {
         }, interval * i, i);
 
     }
+
+    cadena.create(req.body)
+        .catch((error) => res.send(error));
 
     res.send("GRAFICANDO");
 
@@ -113,9 +111,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/casa', (req, ress) => {
-    
+    //console.log(letras.getLetra("Espacio"));
+    //console.log(letras.graficar("1234567890"));
+    ress.send("hola");
+    /*
     request('http://localhost:3000/cadena', function(err, res, body) {
         ress.send(body);
-    });
+    });*/
 
 });
