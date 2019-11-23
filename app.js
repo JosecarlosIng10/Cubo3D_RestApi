@@ -57,10 +57,8 @@ app.post('/cadena', (req, res) => {
     }
 
     cadena.create(req.body)
+        .then((data)=> res.send(data))
         .catch((error) => res.send(error));
-
-    res.send("GRAFICANDO");
-
 
 });
 
