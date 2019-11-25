@@ -30,6 +30,26 @@ const letras = {
     Y: [7,56,7],
     Z: [49,41,45,35],
     Espacio:[0,0],
+    Diagonal:[4,8,46,32],
+    Potencia:[48,8,48],
+    Pestaña:[16,8,6,8],
+    Or:[60],
+    CorcheteA:[60,36],
+    CorcheteB:[36,60],
+    Menorq:[8,20],
+    Mayorq:[2,8],
+    LlaveA:[8,20,34],
+    LlaveB:[34,20,8],
+    Numeral:[40,124,40,124,40],
+    Musica:[20,42,20,8],
+    Asterisco:[20,8,20],
+    Menos:[8,8,8],
+    Mas:[8,28,8],
+    Igual:[20,20,20],
+    ParentesisA:[24,36],
+    ParentesisB:[36,24],
+    InterrogacionA:[58],
+    InterrogacionB:[46],
     '1':[34,63,32],
     '2':[57,41,47],
     '3':[41,41,63],
@@ -63,6 +83,46 @@ module.exports.getCadenaImprimir = (cadena) =>{
             let simbolo = cadena[letra];
             if(simbolo===' '){
                 simbolo="Espacio";
+            } else if (simbolo==='\\'){
+                simbolo="Diagonal";
+            } else if (simbolo==='^'){
+                simbolo="Potencia";
+            } else if (simbolo==='~'){
+                simbolo="Pestaña";
+            } else if (simbolo==='|'){
+                simbolo="Or";
+            } else if (simbolo==='['){
+                simbolo="CorcheteA";
+            } else if (simbolo===']'){
+                simbolo="CorcheteB";
+            } else if (simbolo==='<'){
+                simbolo="Menorq";
+            } else if (simbolo==='>'){
+                simbolo="Mayorq";
+            } else if (simbolo==='{'){
+                simbolo="LlaveA";
+            } else if (simbolo==='}'){
+                simbolo="LlaveB";
+            } else if (simbolo==='#'){
+                simbolo="Numeral";
+            } else if (simbolo==='&'){
+                simbolo="Musica";
+            } else if (simbolo==='*'){
+                simbolo="Asterisco";
+            } else if (simbolo==='-'){
+                simbolo="Menos";
+            } else if (simbolo==='+'){
+                simbolo="Mas";
+            } else if (simbolo==='='){
+                simbolo="Igual";
+            } else if (simbolo==='('){
+                simbolo="ParentesisA";
+            } else if (simbolo===')'){
+                simbolo="ParentesisB";
+            } else if (simbolo==='¡'){
+                simbolo="InterrogacionA";
+            } else if (simbolo==='!'){
+                simbolo="InterrogacionB";
             }
             let cadenaLetra =this.getLetra(simbolo);
             for(let i=0; i< cadenaLetra.length;i++){

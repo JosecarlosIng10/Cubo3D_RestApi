@@ -108,13 +108,4 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/casa', (req, ress) => {
-    //console.log(letras.getLetra("Espacio"));
-    //console.log(letras.graficar("1234567890"));
-    ress.send("hola");
-    /*
-    request('http://localhost:3000/cadena', function(err, res, body) {
-        ress.send(body);
-    });*/
 
-});
