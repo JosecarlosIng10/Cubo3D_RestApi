@@ -47,7 +47,7 @@ app.post('/cadena', (req, res) => {
     var interval = 10 * 70;
     for (let i = 0; i < cadenaLetras.length; i++) {
         setTimeout((i) => {
-            request.post('http://0101cec9.ngrok.io', {
+            request.post('http://06fca04b.ngrok.io/', {
                 form: {
                     user_input: cadenaLetras[i]
                 }
